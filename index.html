@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHUM FAST - 160+ Ứng Dụng Mod Free</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a1a;
+            --bg-secondary: #12122a;
+            --accent: #6366f1;
+            --accent2: #8b5cf6;
+            --text: #ffffff;
+            --text-muted: #a1a1aa;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text);
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0a0a1a 100%);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            padding: 30px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: var(--accent);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .tagline {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .search-box {
+            max-width: 500px;
+            margin: 20px auto 0;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px 15px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .toolbar button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            background: var(--glass);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            font-size: 0.9rem;
+        }
+
+        .toolbar button:hover,
+        .toolbar button.active {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .category-section {
+            margin-bottom: 30px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            padding: 10px 20px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+        }
+
+        .app-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 20px 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .app-card:hover {
+            transform: translateY(-8px);
+            background: var(--glass);
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.3);
+        }
+
+        .app-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 10px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .app-name {
+            font-size: 0.85rem;
+            font-weight: 500;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .app-badge {
+            font-size: 0.65rem;
+            background: #22c55e;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-top: 5px;
+            display: inline-block;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: var(--glass);
+            padding: 15px 25px;
+            border-radius: 15px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--glass);
+            margin-top: 50px;
+        }
+
+        @media (max-width: 600px) {
+            .logo h1 {
+                font-size: 1.8rem;
+            }
+
+            .apps-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 10px;
+            }
+
+            .app-card {
+                padding: 15px 10px;
+            }
+
+            .app-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .app-name {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+            <h1>CHUM FAST</h1>
+        </div>
+        <p class="tagline">⚡ 160+ Ứng Dụng MOD Free Cho Android TV & Mobile</p>
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Tìm kiếm ứng dụng...">
+        </div>
+    </header>
+    <div class="container">
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">160+</div>
+                <div>Ứng Dụng</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">15</div>
+                <div>Danh Mục</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div>Miễn Phí</div>
+            </div>
+        </div>
+        <div class="toolbar">
+            <button class="active" onclick="filterCategory('all')">🔥 Tất Cả</button>
+            <button onclick="filterCategory('phim')">🎬 Phim</button>
+            <button onclick="filterCategory('youtube')">📺 YouTube</button>
+            <button onclick="filterCategory('tv')">📡 TV/IPTV</button>
+            <button onclick="filterCategory('vpn')">🔒 VPN</button>
+            <button onclick="filterCategory('game')">🎮 Game</button>
+            <button onclick="filterCategory('tool')">🛠️ Tiện Ích</button>
+            <button onclick="filterCategory('music')">🎵 Nhạc</button>
+            <button onclick="filterCategory('store')">🏪 Store</button>
+
+        </div>
+        <div id="appsContainer"></div>
+    </div>
+    <footer class="footer">
+        <p>© 2026 CHUM FAST - Tổng hợp ứng dụng MOD miễn phí</p>
+        <p style="margin-top:10px">Nguồn: phuocphap.ahiep.name.vn</p>
+    </footer>
+
+    <script>
+        const apps = [
+            // PHIM & VIDEO
+            { name: "CloudStream", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/clst.apk", icon: "fa-cloud", cat: "phim", mod: 1 },
+            { name: "Stremio TV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/stremiotv.apk", icon: "fa-play-circle", cat: "phim", mod: 0 },
+            { name: "Vua Giải Trí TV", url: "https://github.com/manhnv699/vuagiaitri/releases/download/tv-app-armeabi-v7a/tv-app-armeabi-v7a.apk", icon: "fa-crown", cat: "phim", mod: 0 },
+            { name: "Vua Giải Trí Mobile", url: "https://github.com/manhnv699/vuagiaitri/releases/download/all/vua-giai-tri-mobile-app-universal.apk", icon: "fa-crown", cat: "phim", mod: 0 },
+            { name: "Netlfly TV", url: "https://netflyapp.com/file/netfly_tv.apk", icon: "fa-film", cat: "phim", mod: 0 },
+            { name: "Phim 4K TV", url: "https://phim4k.xyz/downloads/androidtv", icon: "fa-4", cat: "phim", mod: 0 },
+            { name: "Phim 4K Mobile", url: "https://phim4k.xyz/downloads/android", icon: "fa-4", cat: "phim", mod: 0 },
+            { name: "NVC Movie TV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/nvc.apk", icon: "fa-video", cat: "phim", mod: 0 },
+            { name: "Plex", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/plex.apk", icon: "fa-p", cat: "phim", mod: 1 },
+            { name: "Emby TV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/emby.apk", icon: "fa-e", cat: "phim", mod: 1 },
+            { name: "FlixVision", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/flix.apk", icon: "fa-eye", cat: "phim", mod: 0 },
+            { name: "Rổ Giải Trí", url: "https://static.nutscdn.com/download/apk/1762444204/rophim-android-tv.apk", icon: "fa-basket-shopping", cat: "phim", mod: 0 },
+            { name: "HDO Box", url: "https://hdo.app/tv", icon: "fa-box", cat: "phim", mod: 0 },
+            { name: "Drama Player", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/drama.apk", icon: "fa-masks-theater", cat: "phim", mod: 1 },
+            { name: "BeeTV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/beetv.apk", icon: "fa-bee", cat: "phim", mod: 0 },
+            { name: "Bear Player", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/bearplayer.apk", icon: "fa-paw", cat: "phim", mod: 0 },
+            { name: "Monplayer TV", url: "https://monplayer.org/tv", icon: "fa-m", cat: "phim", mod: 0 },
+            // YOUTUBE
+            { name: "SmartTube", url: "https://kutt.it/stn_stable", icon: "fa-youtube", cat: "youtube", mod: 0 },
+            { name: "YouTube Revanced", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/ytbrvc.apk", icon: "fa-youtube", cat: "youtube", mod: 1 },
+            { name: "Revanced Manager", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/rvcm.apk", icon: "fa-gear", cat: "youtube", mod: 0 },
+            { name: "MicroG", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/microg.apk", icon: "fa-g", cat: "youtube", mod: 0 },
+            { name: "TizenTube MOD", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/tizentubemod.apk", icon: "fa-tv", cat: "youtube", mod: 1 },
+            { name: "TizenTube Gốc", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/tizentubegoc.apk", icon: "fa-tv", cat: "youtube", mod: 0 },
+            { name: "Newpipe", url: "https://newpipe.net/#download", icon: "fa-pipe-section", cat: "youtube", mod: 0 },
+            { name: "SkyTube Extra", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/skytube.apk", icon: "fa-cloud", cat: "youtube", mod: 0 },
+            { name: "Dailymotion", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/dailymotion.apk", icon: "fa-d", cat: "youtube", mod: 1 },
+            // TV & IPTV
+            { name: "Imedia TV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/imediatv.apk", icon: "fa-satellite-dish", cat: "tv", mod: 0 },
+            { name: "VAppTV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/vapptv.apk", icon: "fa-v", cat: "tv", mod: 0 },
+            { name: "Cò Tivi TV", url: "https://cotivi.online/download", icon: "fa-crow", cat: "tv", mod: 0 },
+            { name: "Cò Tivi Mobile", url: "https://cotivi.online/mobile", icon: "fa-crow", cat: "tv", mod: 0 },
+            { name: "TV360", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/tv360.apk", icon: "fa-360-degrees", cat: "tv", mod: 1 },
+            { name: "DL Tivi", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/dltv.apk", icon: "fa-tv", cat: "tv", mod: 0 },
+            { name: "VietPlay TV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/vietplaytv.apk", icon: "fa-flag", cat: "tv", mod: 0 },
+            { name: "QuanTV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/quantv.apk", icon: "fa-q", cat: "tv", mod: 0 },
+            { name: "ONNA Online", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/onna.apk", icon: "fa-o", cat: "tv", mod: 0 },
+            { name: "Monster TV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/monster.apk", icon: "fa-ghost", cat: "tv", mod: 0 },
+            { name: "SportsTV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/sporstv.apk", icon: "fa-futbol", cat: "tv", mod: 0 },
+            { name: "SportzX", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/sportzx.apk", icon: "fa-football", cat: "tv", mod: 0 },
+            { name: "RBTV+", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/rbtv.apk", icon: "fa-r", cat: "tv", mod: 0 },
+            { name: "Cricfy TV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/cricfy.apk", icon: "fa-cricket-bat-ball", cat: "tv", mod: 0 },
+            { name: "KK Play", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/kkplay.apk", icon: "fa-k", cat: "tv", mod: 0 },
+            { name: "VeBoTV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/vebotv.apk", icon: "fa-v", cat: "tv", mod: 0 },
+            { name: "Xa Bờ TV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/xabotv.apk", icon: "fa-ship", cat: "tv", mod: 0 },
+            { name: "ThapCam TV", url: "https://github.com/thangoghd/ThapcamTV/releases", icon: "fa-camera", cat: "tv", mod: 0 },
+            { name: "Vừa Mới Thấy", url: "https://github.com/viktorwawick/apk/releases/download/1.0/vmtmod2.apk", icon: "fa-eye", cat: "tv", mod: 0 },
+            { name: "OTT Navigator", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/ott.apk", icon: "fa-compass", cat: "tv", mod: 1 },
+            { name: "M3U IPTV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/m3u.apk", icon: "fa-list", cat: "tv", mod: 1 },
+            { name: "Lazy IPTV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/lazy.apk", icon: "fa-couch", cat: "tv", mod: 1 },
+            { name: "WisePlay", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/wiseplay.apk", icon: "fa-w", cat: "tv", mod: 0 },
+            { name: "Perfect Player", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/pplayer.apk", icon: "fa-circle-play", cat: "tv", mod: 0 },
+            { name: "Televizo", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/televizof.apk", icon: "fa-tv", cat: "tv", mod: 1 },
+            { name: "Tivimate", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/tivimate.apk", icon: "fa-star", cat: "tv", mod: 1 },
+            { name: "Sparkle TV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/sptv.apk", icon: "fa-sparkles", cat: "tv", mod: 1 },
+            { name: "IPTV Pro", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/iptv.apk", icon: "fa-satellite", cat: "tv", mod: 1 },
+            { name: "AceStream", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/ace.apk", icon: "fa-a", cat: "tv", mod: 1 },
+            { name: "Ace Server", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/acesv.apk", icon: "fa-server", cat: "tv", mod: 0 },
+            // VPN
+            { name: "Kiwi VPN", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/kiwi.apk", icon: "fa-kiwi-bird", cat: "vpn", mod: 1 },
+            { name: "1.1.1.1 Cloudflare", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/1111.apk", icon: "fa-cloud", cat: "vpn", mod: 1 },
+            { name: "Adguard", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/adguard.apk", icon: "fa-shield", cat: "vpn", mod: 1 },
+            { name: "VPN Vietnam Super", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/vpnvn.apk", icon: "fa-flag", cat: "vpn", mod: 1 },
+            { name: "UltraSurf VPN", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/ultrasurf.apk", icon: "fa-bolt", cat: "vpn", mod: 1 },
+            { name: "Octohide VPN", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/octohide.apk", icon: "fa-user-secret", cat: "vpn", mod: 0 },
+            { name: "VPN", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/vpnnga.apk", icon: "fa-lock", cat: "vpn", mod: 0 },
+            // MUSIC
+            { name: "Spotify TV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/spotify.apk", icon: "fa-spotify", cat: "music", mod: 0 },
+            { name: "Spotify Mobile", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/spotifymb.apk", icon: "fa-spotify", cat: "music", mod: 1 },
+            { name: "Tivi Karaoke", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/tivikaraoke.apk", icon: "fa-microphone", cat: "music", mod: 0 },
+            // GAME
+            { name: "Happy Chick TV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/happychick.apk", icon: "fa-gamepad", cat: "game", mod: 1 },
+            { name: "RetroArch", url: "https://buildbot.libretro.com/stable/1.21.0/android/RetroArch.apk", icon: "fa-gamepad", cat: "game", mod: 0 },
+            { name: "PPSSPP Gold", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/psp.apk", icon: "fa-p", cat: "game", mod: 1 },
+            { name: "Nes.emu", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/nes.emu.apk", icon: "fa-n", cat: "game", mod: 1 },
+            // TOOL
+            { name: "Tất Cả Ứng Dụng", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/tatcaapp.apk", icon: "fa-boxes-stacked", cat: "tool", mod: 1 },
+            { name: "Quản Lý APP", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/khoa.apk", icon: "fa-folder", cat: "tool", mod: 1 },
+            { name: "TVQuickActions", url: "https://rupanh123-phap.github.io/tvq.html", icon: "fa-bolt", cat: "tool", mod: 1 },
+            { name: "Button Mapper", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/bmapper.apk", icon: "fa-keyboard", cat: "tool", mod: 1 },
+            { name: "APK Mirror Installer", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/apkmirro.apk", icon: "fa-download", cat: "tool", mod: 1 },
+            { name: "SAI", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/sai.apk", icon: "fa-box-open", cat: "tool", mod: 1 },
+            { name: "Xoay Màn Hình", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/xoaymanhinh.apk", icon: "fa-rotate", cat: "tool", mod: 0 },
+            { name: "CastReceiver", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/castreceiver.apk", icon: "fa-chromecast", cat: "tool", mod: 0 },
+            { name: "Sideload Channel", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/slc.apk", icon: "fa-upload", cat: "tool", mod: 0 },
+            { name: "MT Channel", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/mtc.apk", icon: "fa-m", cat: "tool", mod: 0 },
+            { name: "Tăng Âm Lượng", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/volumeboost.apk", icon: "fa-volume-high", cat: "tool", mod: 1 },
+            { name: "Super Voice", url: "https://bom.so/suppervoice", icon: "fa-microphone", cat: "tool", mod: 0 },
+            { name: "VNVoice", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/voicelinor.apk", icon: "fa-comment", cat: "tool", mod: 0 },
+            { name: "Tìm Kiếm Giọng Nói", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/tkgn.apk", icon: "fa-magnifying-glass", cat: "tool", mod: 0 },
+            { name: "Camera IMOU", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/imou.apk", icon: "fa-camera", cat: "tool", mod: 1 },
+            { name: "Bluetooth Remote", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/bltrm.apk", icon: "fa-bluetooth", cat: "tool", mod: 0 },
+            { name: "LeankeyBoard", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/leankey.apk", icon: "fa-keyboard", cat: "tool", mod: 0 },
+            { name: "Keyboard Android TV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/bpatv.apk", icon: "fa-keyboard", cat: "tool", mod: 0 },
+            { name: "Atvtools", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/atvtool.apk", icon: "fa-wrench", cat: "tool", mod: 1 },
+            { name: "Mở bằng", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/o.apk", icon: "fa-folder-open", cat: "tool", mod: 1 },
+            { name: "Swift Backup", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/sbackup.apk", icon: "fa-cloud-arrow-up", cat: "tool", mod: 1 },
+            { name: "Folder Sync", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/fsync.apk", icon: "fa-folder-tree", cat: "tool", mod: 0 },
+            { name: "Remote ADB", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/radb.apk", icon: "fa-terminal", cat: "tool", mod: 0 },
+            { name: "Termux", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/termux.apk", icon: "fa-terminal", cat: "tool", mod: 0 },
+            { name: "Xplorer File Manager", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/xplorer.apk", icon: "fa-folder", cat: "tool", mod: 1 },
+            { name: "Quản Lý Tệp", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/qlt.apk", icon: "fa-file", cat: "tool", mod: 0 },
+            { name: "Mixplorer", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/mixp.apk", icon: "fa-folder-open", cat: "tool", mod: 1 },
+            { name: "RS File Manager", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/rsfile.apk", icon: "fa-file-lines", cat: "tool", mod: 0 },
+            { name: "ATV Launcher PRO", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/atvlauncher.apk", icon: "fa-rocket", cat: "tool", mod: 0 },
+            { name: "Weather - Thời Tiết", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/thoitiet.apk", icon: "fa-cloud-sun", cat: "tool", mod: 1 },
+            { name: "Emotn Launcher", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/emotn.apk", icon: "fa-house", cat: "tool", mod: 0 },
+            { name: "Projectivy Launcher", url: "https://rupanh123-phap.github.io/prolauncher.html", icon: "fa-rocket", cat: "tool", mod: 1 },
+            { name: "MX Player Pro", url: "https://rupanh123-phap.github.io/mx.html", icon: "fa-play", cat: "tool", mod: 1 },
+            { name: "VLC", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/vlc.apk", icon: "fa-play-circle", cat: "tool", mod: 0 },
+            { name: "Just Player", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/justplayerl.apk", icon: "fa-play", cat: "tool", mod: 0 },
+            { name: "Nova Video Player", url: "https://github.com/nova-video-player/aos-AVP/releases", icon: "fa-star", cat: "tool", mod: 0 },
+            { name: "Aplayer", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/aplayer.apk", icon: "fa-a", cat: "tool", mod: 1 },
+            { name: "Vimu", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/vimu.apk", icon: "fa-v", cat: "tool", mod: 1 },
+            { name: "Emet Surf", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/emet.apk", icon: "fa-globe", cat: "tool", mod: 0 },
+            { name: "JioSphere", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/jiosphere.apk", icon: "fa-earth-asia", cat: "tool", mod: 0 },
+            // STORE
+            { name: "Ferrari Downloader", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/ferraridownloader.apk", icon: "fa-car", cat: "store", mod: 1 },
+            { name: "TTV Store", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/ttvstore.apk", icon: "fa-store", cat: "store", mod: 0 },
+            { name: "APK Update", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/apkup.apk", icon: "fa-arrows-rotate", cat: "store", mod: 0 },
+            { name: "Emotn Store", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/emotnstore.apk", icon: "fa-shop", cat: "store", mod: 0 },
+            { name: "AptoideTV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/aptoidetv.apk", icon: "fa-a", cat: "store", mod: 0 },
+            { name: "DL Store", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/dlstore.apk", icon: "fa-download", cat: "store", mod: 0 },
+            { name: "MStore", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/mstore.apk", icon: "fa-m", cat: "store", mod: 0 },
+            { name: "BaoStore", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/baostore.apk", icon: "fa-b", cat: "store", mod: 0 },
+            { name: "HDPlay Store", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/hdplaystore.apk", icon: "fa-h", cat: "store", mod: 0 },
+        ];
+
+        const catNames = {
+            phim: "🎬 Phim & Video",
+            youtube: "📺 YouTube",
+            tv: "📡 TV & IPTV",
+            vpn: "🔒 VPN & Bảo Mật",
+            music: "🎵 Âm Nhạc",
+            game: "🎮 Game & Giả Lập",
+            tool: "🛠️ Tiện Ích",
+            store: "🏪 App Store"
+        };
+
+        function renderApps(filter = 'all', search = '') {
+            const container = document.getElementById('appsContainer');
+            let html = '';
+            const categories = {};
+
+            apps.forEach(app => {
+                if (filter !== 'all' && app.cat !== filter) return;
+                if (search && !app.name.toLowerCase().includes(search.toLowerCase())) return;
+                if (!categories[app.cat]) categories[app.cat] = [];
+                categories[app.cat].push(app);
+            });
+
+            for (const cat in categories) {
+                html += `<div class="category-section" data-cat="${cat}">
+            <h2 class="category-title">${catNames[cat]}</h2>
+            <div class="apps-grid">`;
+                categories[cat].forEach(app => {
+                    html += `<a href="${app.url}" target="_blank" class="app-card">
+                <div class="app-icon"><i class="fas ${app.icon}"></i></div>
+                <div class="app-name">${app.name}</div>
+                ${app.mod ? '<span class="app-badge">MOD</span>' : ''}
+            </a>`;
+                });
+                html += `</div></div>`;
+            }
+            container.innerHTML = html || '<p style="text-align:center;padding:50px;color:#888">Không tìm thấy ứng dụng</p>';
+        }
+
+        function filterCategory(cat) {
+            document.querySelectorAll('.toolbar button').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            renderApps(cat, document.getElementById('searchInput').value);
+        }
+
+        document.getElementById('searchInput').addEventListener('input', e => {
+            renderApps('all', e.target.value);
+        });
+
+
+
+        renderApps();
+    </script>
+</body>
+
+</html>
