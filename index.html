@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHUM FAST - 160+ Ứng Dụng Mod Free</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <style>
         * {
@@ -16,311 +16,326 @@
         }
 
         :root {
-            --bg-dark: #030014;
-            --bg-card: rgba(15, 15, 35, 0.8);
-            --accent-1: #7c3aed;
-            --accent-2: #a855f7;
-            --accent-3: #06b6d4;
-            --accent-4: #ec4899;
+            --bg: #000000;
+            --surface: #0a0a0a;
+            --card: #111111;
+            --border: #1a1a1a;
+            --accent: #00ff88;
+            --accent2: #00ccff;
+            --accent3: #ff00aa;
             --text: #ffffff;
-            --text-dim: rgba(255, 255, 255, 0.6);
-            --border: rgba(255, 255, 255, 0.08);
-            --glow: rgba(124, 58, 237, 0.4);
+            --text-dim: #666666;
         }
 
         body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: var(--bg-dark);
+            font-family: 'Space Grotesk', system-ui, sans-serif;
+            background: var(--bg);
             color: var(--text);
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* Animated Background */
-        .bg-animation {
+        /* Mesh Gradient Background */
+        .mesh-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             z-index: -1;
             background:
-                radial-gradient(ellipse at 20% 20%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 40% 60%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
-                var(--bg-dark);
+                radial-gradient(at 0% 0%, rgba(0, 255, 136, 0.15) 0%, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(0, 204, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(255, 0, 170, 0.1) 0%, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(0, 255, 136, 0.05) 0%, transparent 50%),
+                #000;
         }
 
-        .bg-animation::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
-            opacity: 0.03;
+        /* Floating Orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
         }
 
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.9), rgba(168, 85, 247, 0.8), rgba(236, 72, 153, 0.7));
-            padding: 40px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent);
+            top: -100px;
+            left: -100px;
         }
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
-            animation: headerShine 8s linear infinite;
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent2);
+            top: 50%;
+            right: -100px;
+            animation-delay: -5s;
         }
 
-        @keyframes headerShine {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: var(--accent3);
+            bottom: -100px;
+            left: 30%;
+            animation-delay: -10s;
         }
 
-        .header-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 12px;
-        }
-
-        .logo-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #ffffff, #f0f0ff);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            color: var(--accent-1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.8);
-            animation: logoPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes logoPulse {
+        @keyframes float {
 
             0%,
             100% {
-                transform: scale(1);
+                transform: translate(0, 0) scale(1);
             }
 
-            50% {
-                transform: scale(1.05);
+            33% {
+                transform: translate(30px, -30px) scale(1.05);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.95);
             }
         }
 
-        .logo h1 {
-            font-size: 3rem;
-            font-weight: 900;
-            letter-spacing: -1px;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(to right, #fff, #e0e0ff);
+        /* Header - Minimal & Bold */
+        .header {
+            padding: 60px 20px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo-wrapper {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 32px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            backdrop-filter: blur(20px);
+            margin-bottom: 24px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #000;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            letter-spacing: -2px;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .tagline {
+        .hero-sub {
             font-size: 1.1rem;
-            font-weight: 500;
-            opacity: 0.95;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            color: var(--text-dim);
+            font-weight: 400;
+        }
+
+        /* Search - Floating Style */
+        .search-wrapper {
+            max-width: 500px;
+            margin: 40px auto 0;
         }
 
         .search-box {
-            max-width: 480px;
-            margin: 24px auto 0;
             position: relative;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .search-box:focus-within {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(0, 255, 136, 0.1);
         }
 
         .search-box input {
             width: 100%;
-            padding: 16px 24px 16px 54px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 60px;
-            font-size: 1rem;
-            font-weight: 500;
-            background: rgba(255, 255, 255, 0.15);
+            padding: 18px 20px 18px 56px;
+            background: transparent;
+            border: none;
             color: white;
-            backdrop-filter: blur(20px);
-            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-family: inherit;
         }
 
         .search-box input:focus {
             outline: none;
-            border-color: rgba(255, 255, 255, 0.5);
-            background: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
         }
 
         .search-box input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-dim);
         }
 
         .search-box i {
             position: absolute;
-            left: 22px;
+            left: 20px;
             top: 50%;
             transform: translateY(-50%);
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1.1rem;
+            color: var(--text-dim);
         }
 
-        /* Main Container */
+        /* Container */
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 30px 20px;
+            padding: 40px 20px;
         }
 
-        /* Stats */
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
+        /* Bento Stats */
+        .bento-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 40px;
         }
 
-        .stat-item {
-            background: var(--bg-card);
+        .bento-stat {
+            background: var(--card);
             border: 1px solid var(--border);
-            padding: 20px 35px;
             border-radius: 20px;
+            padding: 28px;
             text-align: center;
-            backdrop-filter: blur(20px);
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
 
-        .stat-item:hover {
+        .bento-stat:hover {
+            border-color: var(--accent);
             transform: translateY(-4px);
-            border-color: var(--accent-1);
-            box-shadow: 0 10px 40px var(--glow);
         }
 
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--accent-2), var(--accent-3));
+        .bento-stat .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .stat-label {
-            font-size: 0.9rem;
+        .bento-stat .label {
+            font-size: 0.85rem;
             color: var(--text-dim);
-            font-weight: 500;
             margin-top: 4px;
         }
 
-        /* Toolbar */
-        .toolbar {
+        /* Filter Pills */
+        .filter-container {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 35px;
-            padding: 0 10px;
-        }
-
-        .toolbar button {
-            padding: 12px 22px;
-            border: 1px solid var(--border);
-            border-radius: 50px;
-            background: var(--bg-card);
-            color: var(--text-dim);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            font-size: 0.9rem;
-            font-weight: 600;
-            font-family: inherit;
-        }
-
-        .toolbar button:hover {
-            color: white;
-            border-color: var(--accent-2);
-            background: rgba(168, 85, 247, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .toolbar button.active {
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-            border-color: transparent;
-            color: white;
-            box-shadow: 0 4px 20px var(--glow);
-        }
-
-        /* Category Section */
-        .category-section {
             margin-bottom: 40px;
-            animation: fadeInUp 0.6s ease;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .filter-pill {
+            padding: 12px 20px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            font-weight: 500;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s;
         }
 
-        .category-title {
-            font-size: 1.4rem;
-            font-weight: 700;
+        .filter-pill:hover {
+            color: white;
+            border-color: #333;
+        }
+
+        .filter-pill.active {
+            background: white;
+            color: black;
+            border-color: white;
+        }
+
+        /* Category */
+        .category {
+            margin-bottom: 48px;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             margin-bottom: 20px;
-            padding: 14px 28px;
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(168, 85, 247, 0.2));
-            border-left: 4px solid var(--accent-2);
-            border-radius: 0 16px 16px 0;
-            display: inline-block;
-            backdrop-filter: blur(10px);
         }
 
-        /* Apps Grid */
-        .apps-grid {
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #000;
+        }
+
+        .category-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .category-count {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            background: var(--card);
+            padding: 4px 12px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+        }
+
+        /* App Grid - Bento Style */
+        .app-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
         }
 
         .app-card {
-            background: var(--bg-card);
+            background: var(--card);
             border: 1px solid var(--border);
             border-radius: 20px;
             padding: 24px 16px;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none;
             color: white;
-            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
         }
@@ -328,116 +343,132 @@
         .app-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3));
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 204, 255, 0.1));
             opacity: 0;
             transition: opacity 0.3s;
         }
 
         .app-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: var(--accent-2);
-            box-shadow: 0 20px 50px rgba(124, 58, 237, 0.25);
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .app-card:hover::before {
             opacity: 1;
         }
 
-        .app-icon {
+        .app-icon-wrap {
             width: 56px;
             height: 56px;
-            margin: 0 auto 14px;
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            margin: 0 auto 12px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 26px;
-            box-shadow: 0 6px 20px var(--glow);
-            transition: transform 0.3s, box-shadow 0.3s;
+            color: #000;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s;
         }
 
-        .app-card:hover .app-icon {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 10px 30px var(--glow);
+        .app-card:hover .app-icon-wrap {
+            transform: scale(1.1) rotate(-5deg);
         }
 
         .app-name {
-            font-size: 0.88rem;
-            font-weight: 600;
-            line-height: 1.4;
+            font-size: 0.85rem;
+            font-weight: 500;
+            line-height: 1.3;
+            position: relative;
+            z-index: 1;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            min-height: 2.8em;
+            min-height: 2.6em;
         }
 
-        .app-badge {
+        .mod-badge {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 4px 10px;
+            background: linear-gradient(135deg, var(--accent), #00dd77);
+            color: #000;
             font-size: 0.65rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #10b981, #059669);
-            padding: 4px 10px;
-            border-radius: 20px;
-            margin-top: 10px;
-            display: inline-block;
+            border-radius: 100px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            box-shadow: 0 2px 10px rgba(16, 185, 129, 0.3);
+            position: relative;
+            z-index: 1;
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            padding: 40px 20px;
-            color: var(--text-dim);
+            padding: 60px 20px;
             border-top: 1px solid var(--border);
-            margin-top: 60px;
-            font-size: 0.9rem;
+            margin-top: 40px;
         }
 
         .footer-brand {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--accent-2), var(--accent-3));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
             margin-bottom: 8px;
         }
 
-        /* Empty State */
-        .empty-state {
+        .footer-brand span {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-text {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        /* Empty */
+        .empty {
             text-align: center;
             padding: 80px 20px;
             color: var(--text-dim);
         }
 
-        .empty-state i {
-            font-size: 4rem;
-            margin-bottom: 20px;
+        .empty i {
+            font-size: 3rem;
             opacity: 0.3;
+            margin-bottom: 16px;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .logo h1 {
-                font-size: 2.2rem;
+            .hero-title {
+                letter-spacing: -1px;
             }
 
-            .logo-icon {
-                width: 55px;
-                height: 55px;
-                font-size: 28px;
+            .bento-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
             }
 
-            .apps-grid {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-                gap: 12px;
+            .bento-stat {
+                padding: 20px 12px;
+                border-radius: 16px;
+            }
+
+            .bento-stat .number {
+                font-size: 1.8rem;
+            }
+
+            .app-grid {
+                grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+                gap: 10px;
             }
 
             .app-card {
@@ -445,65 +476,61 @@
                 border-radius: 16px;
             }
 
-            .app-icon {
+            .app-icon-wrap {
                 width: 48px;
                 height: 48px;
                 font-size: 22px;
+                border-radius: 14px;
             }
 
             .app-name {
+                font-size: 0.78rem;
+            }
+
+            .filter-pill {
+                padding: 10px 16px;
                 font-size: 0.8rem;
-            }
-
-            .stat-item {
-                padding: 16px 24px;
-            }
-
-            .stat-number {
-                font-size: 1.8rem;
-            }
-
-            .category-title {
-                font-size: 1.2rem;
-                padding: 12px 20px;
             }
         }
 
         @media (max-width: 480px) {
             .header {
-                padding: 30px 16px;
+                padding: 40px 16px 30px;
             }
 
-            .logo h1 {
-                font-size: 1.8rem;
+            .logo-wrapper {
+                padding: 12px 20px;
+                gap: 12px;
             }
 
             .logo-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 24px;
-                border-radius: 14px;
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
             }
 
-            .tagline {
-                font-size: 0.95rem;
+            .logo-text {
+                font-size: 1.4rem;
             }
 
-            .toolbar button {
-                padding: 10px 16px;
-                font-size: 0.8rem;
+            .bento-stat .number {
+                font-size: 1.5rem;
             }
 
-            .apps-grid {
+            .bento-stat .label {
+                font-size: 0.75rem;
+            }
+
+            .app-grid {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 10px;
+                gap: 8px;
             }
 
             .app-card {
                 padding: 14px 8px;
             }
 
-            .app-icon {
+            .app-icon-wrap {
                 width: 42px;
                 height: 42px;
                 font-size: 20px;
@@ -513,20 +540,47 @@
             .app-name {
                 font-size: 0.72rem;
             }
+
+            .category-name {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #222;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #333;
         }
     </style>
 </head>
 
 <body>
-    <div class="bg-animation"></div>
+    <div class="mesh-bg"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
 
     <header class="header">
-        <div class="header-content">
-            <div class="logo">
-                <div class="logo-icon"><i class="fas fa-bolt"></i></div>
-                <h1>CHUM FAST</h1>
-            </div>
-            <p class="tagline">⚡ 160+ Ứng Dụng MOD Premium Miễn Phí</p>
+        <div class="logo-wrapper">
+            <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+            <span class="logo-text">CHUM FAST</span>
+        </div>
+        <h1 class="hero-title"><span>160+</span> Apps</h1>
+        <p class="hero-sub">Ứng dụng MOD Premium miễn phí cho Android TV & Mobile</p>
+
+        <div class="search-wrapper">
             <div class="search-box">
                 <i class="fas fa-search"></i>
                 <input type="text" id="searchInput" placeholder="Tìm kiếm ứng dụng...">
@@ -535,44 +589,43 @@
     </header>
 
     <div class="container">
-        <div class="stats">
-            <div class="stat-item">
-                <div class="stat-number">160+</div>
-                <div class="stat-label">Ứng Dụng</div>
+        <div class="bento-stats">
+            <div class="bento-stat">
+                <div class="number">160+</div>
+                <div class="label">Apps</div>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">8</div>
-                <div class="stat-label">Danh Mục</div>
+            <div class="bento-stat">
+                <div class="number">8</div>
+                <div class="label">Danh mục</div>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Miễn Phí</div>
+            <div class="bento-stat">
+                <div class="number">100%</div>
+                <div class="label">Free</div>
             </div>
         </div>
 
-        <div class="toolbar">
-            <button class="active" onclick="filterCategory('all')">🔥 Tất Cả</button>
-            <button onclick="filterCategory('phim')">🎬 Phim</button>
-            <button onclick="filterCategory('youtube')">📺 YouTube</button>
-            <button onclick="filterCategory('tv')">📡 TV/IPTV</button>
-            <button onclick="filterCategory('vpn')">🔒 VPN</button>
-            <button onclick="filterCategory('game')">🎮 Game</button>
-            <button onclick="filterCategory('tool')">🛠️ Tiện Ích</button>
-            <button onclick="filterCategory('music')">🎵 Nhạc</button>
-            <button onclick="filterCategory('store')">🏪 Store</button>
+        <div class="filter-container">
+            <button class="filter-pill active" onclick="filterCategory('all')">Tất cả</button>
+            <button class="filter-pill" onclick="filterCategory('phim')">🎬 Phim</button>
+            <button class="filter-pill" onclick="filterCategory('youtube')">📺 YouTube</button>
+            <button class="filter-pill" onclick="filterCategory('tv')">📡 TV</button>
+            <button class="filter-pill" onclick="filterCategory('vpn')">🔒 VPN</button>
+            <button class="filter-pill" onclick="filterCategory('game')">🎮 Game</button>
+            <button class="filter-pill" onclick="filterCategory('tool')">🛠 Tools</button>
+            <button class="filter-pill" onclick="filterCategory('music')">🎵 Music</button>
+            <button class="filter-pill" onclick="filterCategory('store')">🏪 Store</button>
         </div>
 
         <div id="appsContainer"></div>
     </div>
 
     <footer class="footer">
-        <div class="footer-brand">⚡ CHUM FAST</div>
-        <p>Ứng dụng MOD Premium miễn phí cho Android TV & Mobile</p>
+        <div class="footer-brand">⚡ <span>CHUM FAST</span></div>
+        <p class="footer-text">Made with ❤️ for Android TV & Mobile</p>
     </footer>
 
     <script>
         const apps = [
-            // PHIM & VIDEO
             { name: "CloudStream", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/clst.apk", icon: "fa-cloud", cat: "phim", mod: 1 },
             { name: "Stremio TV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/stremiotv.apk", icon: "fa-play-circle", cat: "phim", mod: 0 },
             { name: "Vua Giải Trí TV", url: "https://github.com/manhnv699/vuagiaitri/releases/download/tv-app-armeabi-v7a/tv-app-armeabi-v7a.apk", icon: "fa-crown", cat: "phim", mod: 0 },
@@ -590,7 +643,6 @@
             { name: "BeeTV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/beetv.apk", icon: "fa-bee", cat: "phim", mod: 0 },
             { name: "Bear Player", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/bearplayer.apk", icon: "fa-paw", cat: "phim", mod: 0 },
             { name: "Monplayer TV", url: "https://monplayer.org/tv", icon: "fa-m", cat: "phim", mod: 0 },
-            // YOUTUBE
             { name: "SmartTube", url: "https://kutt.it/stn_stable", icon: "fa-youtube", cat: "youtube", mod: 0 },
             { name: "YouTube Revanced", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/ytbrvc.apk", icon: "fa-youtube", cat: "youtube", mod: 1 },
             { name: "Revanced Manager", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/rvcm.apk", icon: "fa-gear", cat: "youtube", mod: 0 },
@@ -600,7 +652,6 @@
             { name: "Newpipe", url: "https://newpipe.net/#download", icon: "fa-pipe-section", cat: "youtube", mod: 0 },
             { name: "SkyTube Extra", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/skytube.apk", icon: "fa-cloud", cat: "youtube", mod: 0 },
             { name: "Dailymotion", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/dailymotion.apk", icon: "fa-d", cat: "youtube", mod: 1 },
-            // TV & IPTV
             { name: "Imedia TV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/imediatv.apk", icon: "fa-satellite-dish", cat: "tv", mod: 0 },
             { name: "VAppTV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/vapptv.apk", icon: "fa-v", cat: "tv", mod: 0 },
             { name: "Cò Tivi TV", url: "https://cotivi.online/download", icon: "fa-crow", cat: "tv", mod: 0 },
@@ -631,7 +682,6 @@
             { name: "IPTV Pro", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/iptv.apk", icon: "fa-satellite", cat: "tv", mod: 1 },
             { name: "AceStream", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/ace.apk", icon: "fa-a", cat: "tv", mod: 1 },
             { name: "Ace Server", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/acesv.apk", icon: "fa-server", cat: "tv", mod: 0 },
-            // VPN
             { name: "Kiwi VPN", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/kiwi.apk", icon: "fa-kiwi-bird", cat: "vpn", mod: 1 },
             { name: "1.1.1.1 Cloudflare", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/1111.apk", icon: "fa-cloud", cat: "vpn", mod: 1 },
             { name: "Adguard", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/adguard.apk", icon: "fa-shield", cat: "vpn", mod: 1 },
@@ -639,21 +689,18 @@
             { name: "UltraSurf VPN", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/ultrasurf.apk", icon: "fa-bolt", cat: "vpn", mod: 1 },
             { name: "Octohide VPN", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/octohide.apk", icon: "fa-user-secret", cat: "vpn", mod: 0 },
             { name: "VPN", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/vpnnga.apk", icon: "fa-lock", cat: "vpn", mod: 0 },
-            // MUSIC
             { name: "Spotify TV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/spotify.apk", icon: "fa-spotify", cat: "music", mod: 0 },
             { name: "Spotify Mobile", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/spotifymb.apk", icon: "fa-spotify", cat: "music", mod: 1 },
             { name: "Tivi Karaoke", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/tivikaraoke.apk", icon: "fa-microphone", cat: "music", mod: 0 },
-            // GAME
             { name: "Happy Chick TV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/happychick.apk", icon: "fa-gamepad", cat: "game", mod: 1 },
             { name: "RetroArch", url: "https://buildbot.libretro.com/stable/1.21.0/android/RetroArch.apk", icon: "fa-gamepad", cat: "game", mod: 0 },
             { name: "PPSSPP Gold", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/psp.apk", icon: "fa-p", cat: "game", mod: 1 },
             { name: "Nes.emu", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/nes.emu.apk", icon: "fa-n", cat: "game", mod: 1 },
-            // TOOL
             { name: "Tất Cả Ứng Dụng", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/tatcaapp.apk", icon: "fa-boxes-stacked", cat: "tool", mod: 1 },
             { name: "Quản Lý APP", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/khoa.apk", icon: "fa-folder", cat: "tool", mod: 1 },
             { name: "TVQuickActions", url: "https://rupanh123-phap.github.io/tvq.html", icon: "fa-bolt", cat: "tool", mod: 1 },
             { name: "Button Mapper", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/bmapper.apk", icon: "fa-keyboard", cat: "tool", mod: 1 },
-            { name: "APK Mirror Installer", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/apkmirro.apk", icon: "fa-download", cat: "tool", mod: 1 },
+            { name: "APK Mirror", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/apkmirro.apk", icon: "fa-download", cat: "tool", mod: 1 },
             { name: "SAI", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/sai.apk", icon: "fa-box-open", cat: "tool", mod: 1 },
             { name: "Xoay Màn Hình", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/xoaymanhinh.apk", icon: "fa-rotate", cat: "tool", mod: 0 },
             { name: "CastReceiver", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/castreceiver.apk", icon: "fa-chromecast", cat: "tool", mod: 0 },
@@ -662,35 +709,31 @@
             { name: "Tăng Âm Lượng", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/volumeboost.apk", icon: "fa-volume-high", cat: "tool", mod: 1 },
             { name: "Super Voice", url: "https://bom.so/suppervoice", icon: "fa-microphone", cat: "tool", mod: 0 },
             { name: "VNVoice", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/voicelinor.apk", icon: "fa-comment", cat: "tool", mod: 0 },
-            { name: "Tìm Kiếm Giọng Nói", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/tkgn.apk", icon: "fa-magnifying-glass", cat: "tool", mod: 0 },
             { name: "Camera IMOU", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/imou.apk", icon: "fa-camera", cat: "tool", mod: 1 },
             { name: "Bluetooth Remote", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/bltrm.apk", icon: "fa-bluetooth", cat: "tool", mod: 0 },
             { name: "LeankeyBoard", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/leankey.apk", icon: "fa-keyboard", cat: "tool", mod: 0 },
-            { name: "Keyboard Android TV", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/bpatv.apk", icon: "fa-keyboard", cat: "tool", mod: 0 },
             { name: "Atvtools", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/atvtool.apk", icon: "fa-wrench", cat: "tool", mod: 1 },
             { name: "Mở bằng", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/o.apk", icon: "fa-folder-open", cat: "tool", mod: 1 },
             { name: "Swift Backup", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/sbackup.apk", icon: "fa-cloud-arrow-up", cat: "tool", mod: 1 },
             { name: "Folder Sync", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/fsync.apk", icon: "fa-folder-tree", cat: "tool", mod: 0 },
             { name: "Remote ADB", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/radb.apk", icon: "fa-terminal", cat: "tool", mod: 0 },
             { name: "Termux", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/termux.apk", icon: "fa-terminal", cat: "tool", mod: 0 },
-            { name: "Xplorer File Manager", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/xplorer.apk", icon: "fa-folder", cat: "tool", mod: 1 },
-            { name: "Quản Lý Tệp", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/qlt.apk", icon: "fa-file", cat: "tool", mod: 0 },
+            { name: "Xplorer", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/xplorer.apk", icon: "fa-folder", cat: "tool", mod: 1 },
             { name: "Mixplorer", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/mixp.apk", icon: "fa-folder-open", cat: "tool", mod: 1 },
             { name: "RS File Manager", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/rsfile.apk", icon: "fa-file-lines", cat: "tool", mod: 0 },
-            { name: "ATV Launcher PRO", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/atvlauncher.apk", icon: "fa-rocket", cat: "tool", mod: 0 },
-            { name: "Weather - Thời Tiết", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/thoitiet.apk", icon: "fa-cloud-sun", cat: "tool", mod: 1 },
+            { name: "ATV Launcher", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/atvlauncher.apk", icon: "fa-rocket", cat: "tool", mod: 0 },
+            { name: "Thời Tiết", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/thoitiet.apk", icon: "fa-cloud-sun", cat: "tool", mod: 1 },
             { name: "Emotn Launcher", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/emotn.apk", icon: "fa-house", cat: "tool", mod: 0 },
-            { name: "Projectivy Launcher", url: "https://rupanh123-phap.github.io/prolauncher.html", icon: "fa-rocket", cat: "tool", mod: 1 },
+            { name: "Projectivy", url: "https://rupanh123-phap.github.io/prolauncher.html", icon: "fa-rocket", cat: "tool", mod: 1 },
             { name: "MX Player Pro", url: "https://rupanh123-phap.github.io/mx.html", icon: "fa-play", cat: "tool", mod: 1 },
             { name: "VLC", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/vlc.apk", icon: "fa-play-circle", cat: "tool", mod: 0 },
             { name: "Just Player", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/justplayerl.apk", icon: "fa-play", cat: "tool", mod: 0 },
-            { name: "Nova Video Player", url: "https://github.com/nova-video-player/aos-AVP/releases", icon: "fa-star", cat: "tool", mod: 0 },
+            { name: "Nova Player", url: "https://github.com/nova-video-player/aos-AVP/releases", icon: "fa-star", cat: "tool", mod: 0 },
             { name: "Aplayer", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/aplayer.apk", icon: "fa-a", cat: "tool", mod: 1 },
             { name: "Vimu", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/vimu.apk", icon: "fa-v", cat: "tool", mod: 1 },
             { name: "Emet Surf", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/emet.apk", icon: "fa-globe", cat: "tool", mod: 0 },
             { name: "JioSphere", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/jiosphere.apk", icon: "fa-earth-asia", cat: "tool", mod: 0 },
-            // STORE
-            { name: "Ferrari Downloader", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/ferraridownloader.apk", icon: "fa-car", cat: "store", mod: 1 },
+            { name: "Ferrari Download", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/ferraridownloader.apk", icon: "fa-car", cat: "store", mod: 1 },
             { name: "TTV Store", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/ttvstore.apk", icon: "fa-store", cat: "store", mod: 0 },
             { name: "APK Update", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/apkup.apk", icon: "fa-arrows-rotate", cat: "store", mod: 0 },
             { name: "Emotn Store", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/emotnstore.apk", icon: "fa-shop", cat: "store", mod: 0 },
@@ -701,15 +744,15 @@
             { name: "HDPlay Store", url: "https://github.com/rupanh123-phap/PHAPFERRARI.github.io/releases/download/V1.0.0/hdplaystore.apk", icon: "fa-h", cat: "store", mod: 0 },
         ];
 
-        const catNames = {
-            phim: "🎬 Phim & Video",
-            youtube: "📺 YouTube",
-            tv: "📡 TV & IPTV",
-            vpn: "🔒 VPN & Bảo Mật",
-            music: "🎵 Âm Nhạc",
-            game: "🎮 Game & Giả Lập",
-            tool: "🛠️ Tiện Ích",
-            store: "🏪 App Store"
+        const catData = {
+            phim: { name: "Phim & Video", icon: "🎬" },
+            youtube: { name: "YouTube", icon: "📺" },
+            tv: { name: "TV & IPTV", icon: "📡" },
+            vpn: { name: "VPN & Security", icon: "🔒" },
+            music: { name: "Âm Nhạc", icon: "🎵" },
+            game: { name: "Game & Emulator", icon: "🎮" },
+            tool: { name: "Tiện Ích", icon: "🛠" },
+            store: { name: "App Store", icon: "🏪" }
         };
 
         function renderApps(filter = 'all', search = '') {
@@ -725,28 +768,35 @@
             });
 
             for (const cat in categories) {
-                html += `<div class="category-section" data-cat="${cat}">
-            <h2 class="category-title">${catNames[cat]}</h2>
-            <div class="apps-grid">`;
+                const data = catData[cat];
+                html += `<div class="category">
+            <div class="category-header">
+                <div class="category-icon">${data.icon}</div>
+                <span class="category-name">${data.name}</span>
+                <span class="category-count">${categories[cat].length} apps</span>
+            </div>
+            <div class="app-grid">`;
                 categories[cat].forEach(app => {
                     html += `<a href="${app.url}" target="_blank" class="app-card">
-                <div class="app-icon"><i class="fas ${app.icon}"></i></div>
+                <div class="app-icon-wrap"><i class="fas ${app.icon}"></i></div>
                 <div class="app-name">${app.name}</div>
-                ${app.mod ? '<span class="app-badge">MOD</span>' : ''}
+                ${app.mod ? '<span class="mod-badge">MOD</span>' : ''}
             </a>`;
                 });
                 html += `</div></div>`;
             }
-            container.innerHTML = html || '<div class="empty-state"><i class="fas fa-search"></i><p>Không tìm thấy ứng dụng</p></div>';
+            container.innerHTML = html || '<div class="empty"><i class="fas fa-search"></i><p>Không tìm thấy ứng dụng</p></div>';
         }
 
         function filterCategory(cat) {
-            document.querySelectorAll('.toolbar button').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
             event.target.classList.add('active');
             renderApps(cat, document.getElementById('searchInput').value);
         }
 
         document.getElementById('searchInput').addEventListener('input', e => {
+            document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+            document.querySelector('.filter-pill').classList.add('active');
             renderApps('all', e.target.value);
         });
 
