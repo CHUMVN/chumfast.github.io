@@ -1,2 +1,2 @@
-# [chumrfast](https://chumvn.github.io/chumrfast/)
+# [chumfast](https://chumvn.github.io/chumfast/)
 
